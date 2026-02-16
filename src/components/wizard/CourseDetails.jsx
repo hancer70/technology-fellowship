@@ -65,6 +65,15 @@ const CourseDetails = () => {
                     />
                     {errors.studentCount && <span className="text-red-500 text-xs mt-1">{errors.studentCount.message}</span>}
                 </div>
+
+                <div>
+                    <label className="input-label">Assignment Due Date</label>
+                    <input
+                        type="date"
+                        {...register('dueDate')}
+                        className="input-field"
+                    />
+                </div>
             </div>
 
             <div className="flex justify-end pt-8">

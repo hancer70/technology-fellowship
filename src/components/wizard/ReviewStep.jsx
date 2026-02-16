@@ -42,6 +42,14 @@ const ReviewStep = () => {
                             <span className="block text-xs text-neutral-500 uppercase">Semester</span>
                             <span className="font-bold text-ucf-black">{state?.courseDetails?.semester || 'N/A'}</span>
                         </div>
+                        <div>
+                            <span className="block text-xs text-neutral-500 uppercase">Students</span>
+                            <span className="font-bold text-ucf-black">{state?.courseDetails?.studentCount || 'N/A'}</span>
+                        </div>
+                        <div>
+                            <span className="block text-xs text-neutral-500 uppercase">Due Date</span>
+                            <span className="font-bold text-ucf-black">{state?.courseDetails?.dueDate || 'None'}</span>
+                        </div>
                         <div className="col-span-2">
                             <span className="block text-xs text-neutral-500 uppercase">Name</span>
                             <span className="font-bold text-ucf-black">{state?.courseDetails?.courseName || 'N/A'}</span>
