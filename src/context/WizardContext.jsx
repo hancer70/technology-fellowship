@@ -7,7 +7,8 @@ const defaultState = {
         courseCode: '',
         courseName: '',
         semester: '',
-        studentCount: ''
+        studentCount: '',
+        dueDate: ''
     },
     selectedModules: [],
     topics: []
@@ -15,7 +16,19 @@ const defaultState = {
 
 const getInitialState = () => {
     const saved = localStorage.getItem('wizardState');
-    return saved ? JSON.parse(saved) : defaultState;
+    if (saved) {
+        const parsed = JSON.parse(saved);
+        // Deep merge to ensure new fields (like dueDate) are added to old states
+        return {
+            ...defaultState,
+            ...parsed,
+            courseDetails: {
+                ...defaultState.courseDetails,
+                ...parsed.courseDetails
+            }
+        };
+    }
+    return defaultState;
 };
 
 // Actions

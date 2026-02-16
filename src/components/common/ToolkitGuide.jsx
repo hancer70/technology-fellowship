@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle, TrendingUp, Users, FileText, ArrowRight } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 const ToolkitGuide = ({ isOpen, onClose }) => {
+    const navigate = useNavigate();
     const [internalIsVisible, setInternalIsVisible] = useState(true);
     const [step, setStep] = useState(0);
 
@@ -50,6 +53,7 @@ const ToolkitGuide = ({ isOpen, onClose }) => {
         if (step < steps.length - 1) {
             setStep(step + 1);
         } else {
+            navigate('/toolkit/demo');
             handleClose();
         }
     };

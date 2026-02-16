@@ -48,6 +48,7 @@ const ToolkitViewer = () => {
     const courseCode = activePreset ? activePreset.courseCode : (state.courseDetails?.courseCode || 'HFT 3505');
     const topics = activePreset ? activePreset.topics : (state.topics.length > 0 ? state.topics : ['Disney World', 'Marriott', 'Hilton']);
     const modules = activePreset ? activePreset.modules : (state.selectedModules.length > 0 ? state.selectedModules : ['google-trends', 'social-blade']);
+    const dueDate = activePreset ? null : state.courseDetails?.dueDate;
 
     return (
         <div className="min-h-screen bg-neutral-50 font-sans">
@@ -67,6 +68,7 @@ const ToolkitViewer = () => {
                     </div>
                     <div className="text-sm text-neutral-400">
                         Toolkit ID: <span className="font-mono text-white">{toolkitId || 'DEMO-123'}</span>
+                        {dueDate && <span className="ml-4 text-ucf-gold font-bold">Due: {new Date(dueDate).toLocaleDateString()}</span>}
                     </div>
                 </div>
             </header>
@@ -174,6 +176,7 @@ const ToolkitViewer = () => {
                             courseCode={courseCode}
                             courseName={courseName}
                             topics={topics}
+                            dueDate={dueDate}
                         />
 
                         <div className="bg-neutral-800 text-white p-6 rounded-xl shadow-lg">
@@ -182,14 +185,14 @@ const ToolkitViewer = () => {
                                 Due Dates
                             </h3>
                             <ul className="space-y-3 text-sm">
-                                <li className="flex justify-between">
-                                    <span>Week 3 Analysis</span>
-                                    <span className="text-neutral-400">Feb 28</span>
-                                </li>
-                                <li className="flex justify-between">
-                                    <span>Competitor Report</span>
-                                    <span className="text-neutral-400">Mar 15</span>
-                                </li>
+                                {dueDate ? (
+                                    <li className="flex justify-between">
+                                        <span>{courseName} Assignment</span>
+                                        <span className="text-white font-bold">{new Date(dueDate).toLocaleDateString()}</span>
+                                    </li>
+                                ) : (
+                                    <li className="text-neutral-400 italic">No due date assigned.</li>
+                                )}
                             </ul>
                             <a
                                 href="https://webcourses.ucf.edu/"

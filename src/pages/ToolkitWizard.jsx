@@ -121,16 +121,28 @@ const ToolkitWizard = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div>
-                                        <label className="block text-sm font-bold text-neutral-400 mb-2">Semester</label>
-                                        <input
-                                            type="text"
-                                            name="semester"
-                                            value={state.courseDetails.semester}
-                                            onChange={handleCourseChange}
-                                            placeholder="e.g. Fall 2026"
-                                            className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-4 text-white focus:outline-none focus:border-ucf-gold transition-all"
-                                        />
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-bold text-neutral-400 mb-2">Semester</label>
+                                            <input
+                                                type="text"
+                                                name="semester"
+                                                value={state.courseDetails.semester}
+                                                onChange={handleCourseChange}
+                                                placeholder="e.g. Fall 2026"
+                                                className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-4 text-white focus:outline-none focus:border-ucf-gold transition-all"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-bold text-neutral-400 mb-2">Assignment Due Date</label>
+                                            <input
+                                                type="date"
+                                                name="dueDate"
+                                                value={state.courseDetails.dueDate || ''}
+                                                onChange={handleCourseChange}
+                                                className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-4 text-white focus:outline-none focus:border-ucf-gold transition-all [color-scheme:dark]"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

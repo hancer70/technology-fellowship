@@ -22,12 +22,13 @@ const FacultyDashboard = () => {
     const semester = courseDetails?.semester || 'Summer 2026';
     const courseName = courseDetails?.courseName || 'Social Media Analytics';
     const studentCount = courseDetails?.studentCount || 45;
+    const dueDate = courseDetails?.dueDate;
 
     const displayModules = selectedModules?.length > 0 ? selectedModules : ['google-trends', 'social-blade'];
     const displayTopics = topics?.length > 0 ? topics : ['Disney World', 'Marriott', 'Hilton'];
 
     const handleDownloadAssignment = () => {
-        generatePDF(courseCode, courseName, displayTopics);
+        generatePDF(courseCode, courseName, displayTopics, dueDate);
     };
 
     const tourSteps = [
@@ -80,7 +81,7 @@ const FacultyDashboard = () => {
                     <div>
                         <div className="flex items-center space-x-2 text-ucf-gold mb-2 uppercase tracking-widest text-xs font-bold">
                             <BookOpen className="w-4 h-4" />
-                            <span>{semester} • {courseCode}</span>
+                            <span>{semester} • {courseCode} {dueDate && `• Due: ${new Date(dueDate).toLocaleDateString()}`}</span>
                         </div>
                         <h1 className="text-3xl md:text-4xl font-display font-black leading-tight text-white mb-2">
                             {courseName}
@@ -266,14 +267,14 @@ const FacultyDashboard = () => {
                                 Upcoming Deadlines
                             </h3>
                             <ul className="space-y-4">
-                                <li className="text-sm border-l-2 border-ucf-gold pl-3 py-1">
-                                    <span className="block font-bold text-neutral-800">Trend Analysis Report</span>
-                                    <span className="text-neutral-500 text-xs">Due Feb 28, 2026</span>
-                                </li>
-                                <li className="text-sm border-l-2 border-neutral-200 pl-3 py-1">
-                                    <span className="block font-bold text-neutral-800">Competitor Benchmarking</span>
-                                    <span className="text-neutral-500 text-xs">Due Mar 15, 2026</span>
-                                </li>
+                                {dueDate ? (
+                                    <li className="text-sm border-l-2 border-ucf-gold pl-3 py-1">
+                                        <span className="block font-bold text-neutral-800">{courseName} Assignment</span>
+                                        <span className="text-neutral-500 text-xs">Due {new Date(dueDate).toLocaleDateString()}</span>
+                                    </li>
+                                ) : (
+                                    <li className="text-sm text-neutral-500 italic">No due date set.</li>
+                                )}
                             </ul>
                         </div>
                     </div>

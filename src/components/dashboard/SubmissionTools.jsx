@@ -2,10 +2,10 @@ import React from 'react';
 import { FileText, MonitorPlay, Download, CheckCircle } from 'lucide-react';
 import { generatePDF, generatePPTX } from '../../utils/documentGenerators';
 
-const SubmissionTools = ({ courseCode, courseName, topics }) => {
+const SubmissionTools = ({ courseCode, courseName, topics, dueDate }) => {
 
-    const handleGeneratePDF = () => generatePDF(courseCode, courseName, topics);
-    const handleGeneratePPTX = () => generatePPTX(courseCode, courseName, topics);
+    const handleGeneratePDF = () => generatePDF(courseCode, courseName, topics, dueDate);
+    const handleGeneratePPTX = () => generatePPTX(courseCode, courseName, topics, dueDate);
 
     return (
         <div className="bg-neutral-900 border-l-4 border-ucf-gold rounded-xl p-6 shadow-md">

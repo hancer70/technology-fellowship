@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import pptxgen from 'pptxgenjs';
 
-export const generatePDF = (courseCode, courseName, topics) => {
+export const generatePDF = (courseCode, courseName, topics, dueDate) => {
     const doc = new jsPDF();
 
     // Header
@@ -13,7 +13,7 @@ export const generatePDF = (courseCode, courseName, topics) => {
     doc.text(courseName, 15, 13);
 
     doc.setFontSize(10);
-    doc.text(`${courseCode} | Weekly Analysis Worksheet`, 15, 26);
+    doc.text(`${courseCode} | Weekly Analysis Worksheet${dueDate ? ` | Due: ${new Date(dueDate).toLocaleDateString()}` : ''}`, 15, 26);
     doc.text(`Student Name:`, 140, 26);
 
     // Name Field
@@ -118,7 +118,7 @@ export const generatePDF = (courseCode, courseName, topics) => {
     doc.save(`${courseCode.replace(' ', '_')}_Worksheet_Fillable.pdf`);
 };
 
-export const generatePPTX = (courseCode, courseName, topics) => {
+export const generatePPTX = (courseCode, courseName, topics, dueDate) => {
     const pres = new pptxgen();
 
     // Layout
@@ -129,7 +129,7 @@ export const generatePPTX = (courseCode, courseName, topics) => {
     slide1.background = { color: '000000' }; // UCF Black
     slide1.addText(courseName, { x: 1, y: 3, w: '80%', fontSize: 36, color: 'FFC904', bold: true }); // UCF Gold
     slide1.addText('Weekly Digital Audit', { x: 1, y: 4, w: '80%', fontSize: 24, color: 'FFFFFF' });
-    slide1.addText(`${courseCode} | [Student Name]`, { x: 1, y: 6, fontSize: 14, color: 'CCCCCC' });
+    slide1.addText(`${courseCode} | [Student Name]${dueDate ? ` | Due: ${new Date(dueDate).toLocaleDateString()}` : ''}`, { x: 1, y: 6, fontSize: 14, color: 'CCCCCC' });
 
     // Slide 2: Search Trends
     let slide2 = pres.addSlide();
