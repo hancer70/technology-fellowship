@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-neutral-200;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+}
+
+@layer components {
+
+  /* Institutional Header Styles */
+  .ucf-header-bar {
+    @apply py-3 px-4 font-sans text-sm tracking-wide uppercase font-bold flex items-center justify-between;
+    background-color: #000000;
+    /* ucf-black */
+    color: #ffffff;
+  }
+
+  .college-branding-bar {
+    @apply py-6 px-6 font-display shadow-md;
+    background-color: #ffffff;
+    border-bottom: 4px solid #FFC904;
+    /* ucf-gold */
+    color: #000000;
+    /* ucf-black */
+  }
+
+  /* Official Button Styles */
+  .btn-ucf-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold uppercase tracking-wide text-sm transition-all duration-200 shadow-sm;
+    background-color: #FFC904;
+    /* ucf-gold */
+    color: #000000;
+    /* ucf-black */
+  }
+
+  .btn-ucf-primary:hover {
+    background-color: #BA9B37;
+    /* ucf-gold-dark */
+    color: #ffffff;
+  }
+
+  .btn-ucf-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold uppercase tracking-wide text-sm transition-all duration-200 shadow-sm;
+    background-color: #000000;
+    /* ucf-black */
+    color: #ffffff;
+  }
+
+  .btn-ucf-secondary:hover {
+    @apply bg-neutral-800;
+  }
+
+  /* Academic Card Styles */
+  .academic-card {
+    @apply bg-white border border-neutral-200 p-8 transition-all duration-200 hover:shadow-lg relative overflow-hidden;
+  }
+
+  .academic-card:hover {
+    border-color: #FFC904;
+  }
+
+  .academic-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 transform scale-x-0 transition-transform duration-300 origin-left;
+    background-color: #FFC904;
+  }
+
+  .academic-card:hover::before {
+    @apply scale-x-100;
+  }
+
+  /* Section Dividers */
+  .section-divider {
+    @apply w-24 h-1 mb-8;
+    background-color: #FFC904;
+  }
+
+  /* Typography Overrides */
+  .heading-1 {
+    @apply font-display font-black text-5xl md:text-6xl leading-tight;
+    color: #000000;
+  }
+
+  .heading-2 {
+    @apply font-display font-bold text-3xl md:text-4xl mb-4;
+    color: #000000;
+  }
+}
+
+@layer utilities {
+
+  /* Smooth scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-neutral-100 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-ucf-gold-dark rounded-full hover:bg-ucf-black;
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ucf-gold-dark to-ucf-black;
+  }
+
+  .text-ucf-gold {
+    color: #FFC904;
+  }
+
+  .bg-ucf-gold {
+    background-color: #FFC904;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%);
+  background-size: 1000px 100%;
+}
+
+@media print {
+  @page {
+    margin: 20mm;
+    size: auto;
+  }
+
+  body {
+    @apply bg-white text-black;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Hide UI elements that are not part of the document */
+  header,
+  nav,
+  button,
+  .print\:hidden,
+  .tour-button {
+    display: none !important;
+  }
+
+  /* Ensure the main content area takes full width and has no shadows */
+  .min-h-screen {
+    min-height: auto !important;
+    padding-bottom: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Force background graphics to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Dashboard Grid Optimization for Print */
+  @page {
+    size: landscape;
+    margin: 10mm;
+  }
+
+
+  /* Target the main assignment card container */
+  .bg-white.rounded-xl.shadow-lg {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide the Assignment Builder H1/Tabs header */
+  /* We can target the specific structure in AssignmentBuilder.jsx */
+  .bg-white.border-b.border-neutral-200 {
+    display: none !important;
+  }
+
+  /* Ensure text is black */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  span {
+    color: #000000 !important;
+  }
+
+  /* Keep UCF Gold accent colors */
+  .text-ucf-gold,
+  .border-ucf-gold,
+  .bg-ucf-gold {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Allow page breaks */
+  section,
+  .page-break {
+    break-inside: avoid;
+  }
+
+  /* Force background graphics for key elements if needed */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
