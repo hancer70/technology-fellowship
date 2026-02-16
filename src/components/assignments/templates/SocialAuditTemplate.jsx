@@ -3,7 +3,7 @@ import SubmissionChecklist from '../SubmissionChecklist';
 
 const SocialAuditTemplate = ({ data }) => {
     // Debug logging
-    console.log('SocialAuditTemplate data:', data);
+    // console.log('SocialAuditTemplate data:', data);
 
     // Determine the subject topic
     const subject = data?.topics?.length > 0 ? data.topics[0] : '[Selected Brand]';

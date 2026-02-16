@@ -28,7 +28,7 @@ export const logEvent = (eventName, details = {}) => {
     };
     logs.push(newEvent);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(logs));
-    console.log(`[Analytics] ${eventName}`, details);
+    // console.log(`[Analytics] ${eventName}`, details);
     return newEvent;
 };
 

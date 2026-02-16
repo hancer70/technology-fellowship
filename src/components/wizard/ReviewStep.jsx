@@ -12,7 +12,7 @@ const ReviewStep = () => {
         setIsGenerating(true);
         // Simulate API call
         setTimeout(() => {
-            console.log('Toolkit Generated:', state);
+            // console.log('Toolkit Generated:', state);
             setIsGenerating(false);
             // Navigate to dashboard or success page (placeholder for now)
             alert('Toolkit Generated! (Console has details)');
