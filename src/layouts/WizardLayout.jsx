@@ -17,13 +17,13 @@ const WizardLayout = ({ children }) => {
     return (
         <div className="min-h-screen bg-neutral-50 flex flex-col font-sans">
             {/* Minimal UCF Header for Focus */}
-            <header className="bg-ucf-black text-white py-4 px-6 border-b-4 border-ucf-gold flex justify-between items-center shadow-lg sticky top-0 z-50">
-                <div className="flex items-center space-x-3">
-                    <span className="font-display font-bold text-xl tracking-wide uppercase">
+            <header className="bg-ucf-black text-white py-4 px-6 border-b-4 border-ucf-gold flex flex-col md:flex-row md:justify-between md:items-center shadow-lg sticky top-0 z-50">
+                <div className="flex items-center space-x-3 mb-2 md:mb-0">
+                    <span className="font-display font-bold text-lg md:text-xl tracking-wide uppercase">
                         Rosen College <span className="text-ucf-gold">Faculty Toolkit</span>
                     </span>
                 </div>
-                <div className="text-xs uppercase tracking-widest text-neutral-400 font-semibold">
+                <div className="text-[10px] md:text-xs uppercase tracking-widest text-neutral-400 font-semibold">
                     Toolkit Setup Wizard
                 </div>
             </header>

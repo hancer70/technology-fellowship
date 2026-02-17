@@ -95,19 +95,19 @@ const FacultyDashboard = () => {
                         </p>
                     </div>
 
-                    <div className="flex space-x-3 mt-6 md:mt-0">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 md:mt-0 w-full md:w-auto">
                         <button
                             onClick={startTour}
-                            className="flex items-center px-4 py-2 bg-neutral-800 rounded-lg text-sm font-bold hover:bg-neutral-700 transition-colors text-white"
+                            className="flex items-center justify-center px-4 py-2 bg-neutral-800 rounded-lg text-sm font-bold hover:bg-neutral-700 transition-colors text-white"
                         >
                             <CircleHelp className="w-4 h-4 mr-2" /> Tour
                         </button>
-                        <button className="flex items-center px-4 py-2 bg-neutral-800 rounded-lg text-sm font-bold hover:bg-neutral-700 transition-colors">
+                        <button className="flex items-center justify-center px-4 py-2 bg-neutral-800 rounded-lg text-sm font-bold hover:bg-neutral-700 transition-colors text-white">
                             <Share2 className="w-4 h-4 mr-2" /> Share
                         </button>
                         <button
                             onClick={() => window.print()}
-                            className="flex items-center px-4 py-2 bg-ucf-gold text-ucf-black rounded-lg text-sm font-bold hover:bg-ucf-gold-dark hover:text-white transition-colors print:hidden"
+                            className="flex items-center justify-center px-4 py-2 bg-ucf-gold text-ucf-black rounded-lg text-sm font-bold hover:bg-ucf-gold-dark hover:text-white transition-colors print:hidden"
                         >
                             <Download className="w-4 h-4 mr-2" /> Export Report
                         </button>
@@ -248,6 +248,31 @@ const FacultyDashboard = () => {
                                     <TrendingUp className="w-5 h-5 mr-2 text-ucf-gold" />
                                     Class Engagement
                                 </h3>
+                                <div className="p-6">
+                                    <h3 className="text-xs font-bold text-ucf-black uppercase tracking-widest mb-4">Course Details</h3>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <span className="block text-xs text-neutral-500 uppercase">Code</span>
+                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.courseCode || 'N/A'}</span>
+                                        </div>
+                                        <div>
+                                            <span className="block text-xs text-neutral-500 uppercase">Semester</span>
+                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.semester || 'N/A'}</span>
+                                        </div>
+                                        <div>
+                                            <span className="block text-xs text-neutral-500 uppercase">Students</span>
+                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.studentCount || 'N/A'}</span>
+                                        </div>
+                                        <div>
+                                            <span className="block text-xs text-neutral-500 uppercase">Due Date</span>
+                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.dueDate || 'None'}</span>
+                                        </div>
+                                        <div className="sm:col-span-2">
+                                            <span className="block text-xs text-neutral-500 uppercase">Name</span>
+                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.courseName || 'N/A'}</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-end border-b border-neutral-800 pb-2">
                                         <span className="text-sm text-neutral-400">Active Students</span>
