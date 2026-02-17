@@ -69,17 +69,17 @@ const AssignmentBuilder = () => {
             {/* Header / Tabs */}
             <div className="bg-white border-b border-neutral-200 print:hidden">
                 <div className="container mx-auto px-6 pt-8">
-                    <h1 className="text-4xl font-display font-bold text-ucf-black mb-6">Assignment Builder</h1>
-                    <div className="flex space-x-6">
+                    <h1 className="text-2xl md:text-4xl font-display font-bold text-ucf-black mb-6">Assignment Builder</h1>
+                    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                         <button
                             onClick={() => { setActiveTab('generator'); setSelectedTemplate(null); }}
-                            className={`pb-4 text-sm font-bold border-b-2 transition-colors ${activeTab === 'generator' ? 'border-ucf-gold text-ucf-black' : 'border-transparent text-neutral-500 hover:text-neutral-700'}`}
+                            className={`pb-4 text-sm font-bold border-b-2 transition-colors text-left sm:text-center ${activeTab === 'generator' ? 'border-ucf-gold text-ucf-black' : 'border-transparent text-neutral-500 hover:text-neutral-700'}`}
                         >
                             Assignment Generator
                         </button>
                         <button
                             onClick={() => setActiveTab('library')}
-                            className={`pb-4 text-sm font-bold border-b-2 transition-colors ${activeTab === 'library' ? 'border-ucf-gold text-ucf-black' : 'border-transparent text-neutral-500 hover:text-neutral-700'}`}
+                            className={`pb-4 text-sm font-bold border-b-2 transition-colors text-left sm:text-center ${activeTab === 'library' ? 'border-ucf-gold text-ucf-black' : 'border-transparent text-neutral-500 hover:text-neutral-700'}`}
                         >
                             Template Library
                         </button>
@@ -104,7 +104,7 @@ const AssignmentBuilder = () => {
                                 </h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Course Name / Code</label>
+                                        <label className="input-label">Course Name / Code</label>
                                         <CourseSelector
                                             register={() => ({})} // Mock register since we aren't using hook-form here
                                             defaultValue={customContext.courseName}
@@ -118,12 +118,12 @@ const AssignmentBuilder = () => {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Course Focus (1-2 Sentences)</label>
+                                        <label className="input-label">Course Focus (1-2 Sentences)</label>
                                         <textarea
                                             name="courseDescription"
                                             value={customContext.courseDescription}
                                             onChange={handleContextChange}
-                                            className="w-full p-3 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:border-ucf-gold font-medium resize-none h-[50px]"
+                                            className="input-field resize-none h-[100px] md:h-[50px]"
                                             placeholder="Briefly describe what this course is about..."
                                         />
                                     </div>
@@ -147,16 +147,16 @@ const AssignmentBuilder = () => {
                     ) : (
                         // Assignment Preview View
                         <div className="container mx-auto px-6 py-8">
-                            <div className="mb-6 flex justify-between items-center print:hidden">
+                            <div className="mb-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 print:hidden">
                                 <button
                                     onClick={() => setSelectedTemplate(null)}
-                                    className="flex items-center text-neutral-500 hover:text-ucf-gold transition-colors font-bold"
+                                    className="flex items-center text-neutral-500 hover:text-ucf-gold transition-colors font-bold w-full sm:w-auto justify-center sm:justify-start"
                                 >
                                     <ArrowLeft className="w-4 h-4 mr-2" /> Back to Templates
                                 </button>
                                 <button
                                     onClick={handlePrint}
-                                    className="flex items-center bg-ucf-black text-white px-4 py-2 rounded-lg font-bold hover:bg-ucf-gold hover:text-ucf-black transition-colors"
+                                    className="flex items-center bg-ucf-black text-white px-4 py-3 rounded-lg font-bold hover:bg-ucf-gold hover:text-ucf-black transition-colors w-full sm:w-auto justify-center"
                                 >
                                     <Printer className="w-4 h-4 mr-2" /> Print / Save PDF
                                 </button>

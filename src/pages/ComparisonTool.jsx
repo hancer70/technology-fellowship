@@ -23,10 +23,10 @@ const ComparisonTool = () => {
             <div className="container mx-auto px-6 py-6">
 
                 {/* Header */}
-                <div className="mb-6">
-                    <h1 className="text-3xl font-display font-bold text-ucf-black mb-1">Case Study Comparison Tool</h1>
-                    <p className="text-neutral-600 max-w-2xl text-sm">
-                        Perform a side-by-side competitive analysis of two brands. Compare search trends and social media growth metrics in real-time.
+                <div className="bg-white p-6 md:p-8 rounded-xl border border-neutral-200 shadow-sm">
+                    <h2 className="text-xl md:text-2xl font-display font-bold text-ucf-black mb-4 text-center md:text-left">External Resource Library</h2>
+                    <p className="text-neutral-600 mb-8 max-w-3xl text-sm md:text-base text-center md:text-left">
+                        These are standard templates used in the industry. Click <strong>"Access Tool"</strong> to open an interactive version where you can generate, copy, or download the files for your students.
                     </p>
                 </div>
 
@@ -36,11 +36,11 @@ const ComparisonTool = () => {
                         <ComparisonInput onCompare={handleCompare} />
 
                         <div className="mt-12 text-center">
-                            <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-3">Popular Comparisons</h3>
-                            <div className="inline-flex gap-2">
-                                <button onClick={() => handleCompare('Marriott', 'Hilton')} className="px-3 py-1.5 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors">Marriott vs Hilton</button>
-                                <button onClick={() => handleCompare('Disney', 'Universal')} className="px-3 py-1.5 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors">Disney vs Universal</button>
-                                <button onClick={() => handleCompare('Uber', 'Lyft')} className="px-3 py-1.5 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors">Uber vs Lyft</button>
+                            <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4">Popular Comparisons</h3>
+                            <div className="flex flex-wrap justify-center gap-2">
+                                <button onClick={() => handleCompare('Marriott', 'Hilton')} className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors whitespace-nowrap">Marriott vs Hilton</button>
+                                <button onClick={() => handleCompare('Disney', 'Universal')} className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors whitespace-nowrap">Disney vs Universal</button>
+                                <button onClick={() => handleCompare('Uber', 'Lyft')} className="px-4 py-2 bg-white border border-neutral-200 rounded-full text-xs text-neutral-600 hover:border-ucf-gold transition-colors whitespace-nowrap">Uber vs Lyft</button>
                             </div>
                         </div>
                     </div>
