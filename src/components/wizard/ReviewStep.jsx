@@ -33,7 +33,7 @@ const ReviewStep = () => {
             <div className="bg-neutral-50 rounded-xl border border-neutral-200 overflow-hidden divide-y divide-neutral-200">
                 <div className="p-6">
                     <h3 className="text-xs font-bold text-ucf-black uppercase tracking-widest mb-4">Course Details</h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <span className="block text-xs text-neutral-500 uppercase">Code</span>
                             <span className="font-bold text-ucf-black">{state?.courseDetails?.courseCode || 'N/A'}</span>
@@ -50,7 +50,7 @@ const ReviewStep = () => {
                             <span className="block text-xs text-neutral-500 uppercase">Due Date</span>
                             <span className="font-bold text-ucf-black">{state?.courseDetails?.dueDate || 'None'}</span>
                         </div>
-                        <div className="col-span-2">
+                        <div className="sm:col-span-2">
                             <span className="block text-xs text-neutral-500 uppercase">Name</span>
                             <span className="font-bold text-ucf-black">{state?.courseDetails?.courseName || 'N/A'}</span>
                         </div>

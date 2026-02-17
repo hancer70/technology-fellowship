@@ -248,31 +248,6 @@ const FacultyDashboard = () => {
                                     <TrendingUp className="w-5 h-5 mr-2 text-ucf-gold" />
                                     Class Engagement
                                 </h3>
-                                <div className="p-6">
-                                    <h3 className="text-xs font-bold text-ucf-black uppercase tracking-widest mb-4">Course Details</h3>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div>
-                                            <span className="block text-xs text-neutral-500 uppercase">Code</span>
-                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.courseCode || 'N/A'}</span>
-                                        </div>
-                                        <div>
-                                            <span className="block text-xs text-neutral-500 uppercase">Semester</span>
-                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.semester || 'N/A'}</span>
-                                        </div>
-                                        <div>
-                                            <span className="block text-xs text-neutral-500 uppercase">Students</span>
-                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.studentCount || 'N/A'}</span>
-                                        </div>
-                                        <div>
-                                            <span className="block text-xs text-neutral-500 uppercase">Due Date</span>
-                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.dueDate || 'None'}</span>
-                                        </div>
-                                        <div className="sm:col-span-2">
-                                            <span className="block text-xs text-neutral-500 uppercase">Name</span>
-                                            <span className="font-bold text-ucf-black">{state?.courseDetails?.courseName || 'N/A'}</span>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-end border-b border-neutral-800 pb-2">
                                         <span className="text-sm text-neutral-400">Active Students</span>
