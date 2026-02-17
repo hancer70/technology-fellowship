@@ -126,7 +126,7 @@ const Header = () => {
                         exit="closed"
                         variants={menuVariants}
                         transition={{ type: "tween", duration: 0.3 }}
-                        className="fixed inset-0 z-40 bg-white md:hidden pt-24 px-6 flex flex-col space-y-6 shadow-2xl"
+                        className="fixed inset-0 z-40 bg-white md:hidden pt-48 px-6 flex flex-col space-y-6 shadow-2xl"
                     >
                         <Link to="/proposal" onClick={toggleMenu} className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Fellowship Proposal</Link>
                         <a href="https://hospitality.ucf.edu/degree-programs/" target="_blank" rel="noopener noreferrer" className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Academics</a>
