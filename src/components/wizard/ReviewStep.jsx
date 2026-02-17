@@ -15,7 +15,7 @@ const ReviewStep = () => {
             // console.log('Toolkit Generated:', state);
             setIsGenerating(false);
             // Navigate to dashboard or success page (placeholder for now)
-            alert('Toolkit Generated! (Console has details)');
+            // Navigate to dashboard
             navigate('/dashboard');
         }, 2000);
     };

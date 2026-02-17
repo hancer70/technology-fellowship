@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { useWizard } from '../../context/WizardContext';
 import WizardLayout from '../../layouts/WizardLayout';
 import CourseDetails from './CourseDetails';
@@ -18,6 +19,10 @@ const WizardFlow = () => {
 };
 
 const WizardContainer = () => {
+    useEffect(() => {
+        document.title = 'Create Toolkit | SMA Toolkit';
+    }, []);
+
     return (
         <WizardLayout>
             <WizardFlow />

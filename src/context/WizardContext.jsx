@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 // Initial State
 const defaultState = {
@@ -10,23 +10,28 @@ const defaultState = {
         studentCount: '',
         dueDate: ''
     },
-    selectedModules: [],
-    topics: []
+    courseContext: null, // Store full course object from DB
+    assessments: [], // Store generated assessments
+    isGenerating: false,
+    error: null
 };
 
 const getInitialState = () => {
     const saved = localStorage.getItem('wizardState');
     if (saved) {
-        const parsed = JSON.parse(saved);
-        // Deep merge to ensure new fields (like dueDate) are added to old states
-        return {
-            ...defaultState,
-            ...parsed,
-            courseDetails: {
-                ...defaultState.courseDetails,
-                ...parsed.courseDetails
-            }
-        };
+        try {
+            const parsed = JSON.parse(saved);
+            return {
+                ...defaultState,
+                ...parsed,
+                courseDetails: {
+                    ...defaultState.courseDetails,
+                    ...parsed.courseDetails
+                }
+            };
+        } catch (e) {
+            console.error('Error parsing wizard state', e);
+        }
     }
     return defaultState;
 };
@@ -44,7 +49,11 @@ const wizardReducer = (state, action) => {
         case SET_STEP:
             return { ...state, step: action.payload };
         case UPDATE_COURSE_DETAILS:
-            return { ...state, courseDetails: { ...state.courseDetails, ...action.payload } };
+            return {
+                ...state,
+                courseDetails: { ...state.courseDetails, ...action.payload.details },
+                courseContext: action.payload.context !== undefined ? action.payload.context : state.courseContext
+            };
         case TOGGLE_MODULE: {
             const moduleId = action.payload;
             const isSelected = state.selectedModules.includes(moduleId);
@@ -71,13 +80,16 @@ const WizardContext = createContext();
 export const WizardProvider = ({ children }) => {
     const [state, dispatch] = useReducer(wizardReducer, defaultState, getInitialState);
 
-    React.useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('wizardState', JSON.stringify(state));
     }, [state]);
 
     const nextStep = () => dispatch({ type: SET_STEP, payload: state.step + 1 });
-    const prevStep = () => dispatch({ type: SET_STEP, payload: Math.max(1, state.step - 1) });
-    const updateCourseDetails = (details) => dispatch({ type: UPDATE_COURSE_DETAILS, payload: details });
+    const prevStep = () => dispatch({ type: SET_STEP, payload: Math.max(0, state.step - 1) });
+    const updateCourseDetails = (details, context) => dispatch({
+        type: UPDATE_COURSE_DETAILS,
+        payload: { details, context }
+    });
     const toggleModule = (moduleId) => dispatch({ type: TOGGLE_MODULE, payload: moduleId });
     const addTopic = (topic) => dispatch({ type: ADD_TOPIC, payload: topic });
     const removeTopic = (topic) => dispatch({ type: REMOVE_TOPIC, payload: topic });

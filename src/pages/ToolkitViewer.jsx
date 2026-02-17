@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useWizard } from '../context/WizardContext';
 import { BookOpen, LayoutDashboard, ExternalLink, Calendar } from 'lucide-react';
@@ -49,6 +49,14 @@ const ToolkitViewer = () => {
     const topics = activePreset ? activePreset.topics : (state.topics.length > 0 ? state.topics : ['Disney World', 'Marriott', 'Hilton']);
     const modules = activePreset ? activePreset.modules : (state.selectedModules.length > 0 ? state.selectedModules : ['google-trends', 'social-blade']);
     const dueDate = activePreset ? null : state.courseDetails?.dueDate;
+
+    useEffect(() => {
+        if (courseCode) {
+            document.title = `${courseCode} Toolkit | SMA Toolkit`;
+        } else {
+            document.title = 'Student Toolkit | SMA Toolkit';
+        }
+    }, [courseCode]);
 
     return (
         <div className="min-h-screen bg-neutral-50 font-sans">

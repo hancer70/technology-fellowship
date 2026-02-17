@@ -15,7 +15,7 @@ const ModuleSelection = () => {
         {
             id: 'social-blade',
             title: 'Social Blade Analytics',
-            description: 'Track follower growth and engagement rates for Instagram, TikTok, and YouTube.',
+            description: 'Track follower growth and engagement rates for Instagram, TikTok, and YouTube. (Note: Login required for full stats)',
             icon: Zap
         },
         {

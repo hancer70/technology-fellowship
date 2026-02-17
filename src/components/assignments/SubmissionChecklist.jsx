@@ -19,6 +19,7 @@ const SubmissionChecklist = ({ data }) => {
     if (selectedModules.includes('social-blade')) {
         checklistItems.push("Social Blade Growth Chart (Screenshot)");
         checklistItems.push("Engagement Rate Calculation");
+        checklistItems.push("Social Blade Login Verification (Prerequisite)");
     }
 
     // Attempt to guess if SWOT is needed based on template type (passed via data or context)

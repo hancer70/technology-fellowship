@@ -1,48 +1,58 @@
-import React from 'react';
-import { FileText, Copy, ExternalLink, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText, Copy, ExternalLink, X, PlayCircle } from 'lucide-react';
+import ContentCalendarPreview from './resources/ContentCalendarPreview';
+import OutreachScriptsPreview from './resources/OutreachScriptsPreview';
+import CrisisFlowchartPreview from './resources/CrisisFlowchartPreview';
+import AnalyticsReportPreview from './resources/AnalyticsReportPreview';
 
 const TemplateLibrary = () => {
+    const [selectedTemplate, setSelectedTemplate] = useState(null);
+
     const templates = [
         {
             id: 'content-calendar',
             title: 'Social Media Content Calendar',
             description: 'A semester-long planning grid for scheduling posts across multiple platforms.',
-            originalUrl: 'https://docs.google.com/document/d/1XlM8Fh3z4qR5yQ9_J7Lk6g/edit', // Placeholder
+            component: <ContentCalendarPreview />,
             category: 'Planning'
         },
         {
             id: 'influencer-outreach',
             title: 'Influencer Outreach Scripts',
             description: 'Templates for initial contact, follow-up, and collaboration proposals.',
-            originalUrl: 'https://docs.google.com/document/d/1YnQ7oP8wZ2aX3b4c5d6e7f8/edit', // Placeholder
+            component: <OutreachScriptsPreview />,
             category: 'Communication'
         },
         {
             id: 'crisis-response',
             title: 'Crisis Response Flowchart',
             description: 'Step-by-step protocol for handling negative social media engagement.',
-            originalUrl: 'https://docs.google.com/document/d/1A-B2c3d4e5f6g7h8i9j0k/edit', // Placeholder
+            component: <CrisisFlowchartPreview />,
             category: 'Strategy'
         },
         {
             id: 'analytics-report',
             title: 'Monthly Analytics Report Shell',
             description: 'Blank structure for reporting KPIs, growth, and engagement metrics.',
-            originalUrl: 'https://docs.google.com/document/d/1m2n3o4p5q6r7s8t9u0v/edit', // Placeholder
+            component: <AnalyticsReportPreview />,
             category: 'Reporting'
         }
     ];
 
-    const getForceCopyUrl = (url) => {
-        return url.replace(/\/edit.*$/, '/copy');
+    const openTemplate = (template) => {
+        setSelectedTemplate(template);
+    };
+
+    const closeTemplate = () => {
+        setSelectedTemplate(null);
     };
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 relative">
             <div className="bg-white p-8 rounded-xl border border-neutral-200 shadow-sm">
                 <h2 className="text-2xl font-display font-bold text-ucf-black mb-4">External Resource Library</h2>
                 <p className="text-neutral-600 mb-8 max-w-3xl">
-                    These are standard templates used in the industry. Click <strong>"Get Student Copy"</strong> to generate a specialized link that will force your students to make their own copy of the document, ensuring they don't overwrite the master template.
+                    These are standard templates used in the industry. Click <strong>"Access Tool"</strong> to open an interactive version where you can generate, copy, or download the files for your students.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -60,29 +70,44 @@ const TemplateLibrary = () => {
                             <h3 className="font-bold text-lg text-ucf-black mb-2">{template.title}</h3>
                             <p className="text-sm text-neutral-600 mb-6 min-h-[40px]">{template.description}</p>
 
-                            <div className="flex space-x-3">
-                                <a
-                                    href={getForceCopyUrl(template.originalUrl)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 flex items-center justify-center px-4 py-2 bg-ucf-black text-white text-sm font-bold rounded-lg hover:bg-ucf-gold hover:text-ucf-black transition-colors"
-                                >
-                                    <Copy className="w-4 h-4 mr-2" /> Get Student Copy
-                                </a>
-                                <a
-                                    href={template.originalUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center px-3 py-2 bg-white border border-neutral-300 text-neutral-600 text-sm font-bold rounded-lg hover:bg-neutral-50 transition-colors"
-                                    title="Preview Original"
-                                >
-                                    <ExternalLink className="w-4 h-4" />
-                                </a>
-                            </div>
+                            <button
+                                onClick={() => openTemplate(template)}
+                                className="w-full flex items-center justify-center px-4 py-2 bg-ucf-black text-white text-sm font-bold rounded-lg hover:bg-ucf-gold hover:text-ucf-black transition-colors"
+                            >
+                                <PlayCircle className="w-4 h-4 mr-2" /> Access Tool
+                            </button>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {/* Modal Overlay */}
+            {selectedTemplate && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+                        <div className="p-6 border-b border-neutral-100 flex justify-between items-center bg-neutral-50">
+                            <div>
+                                <h3 className="text-xl font-bold font-display text-ucf-black">{selectedTemplate.title}</h3>
+                                <p className="text-sm text-neutral-500">{selectedTemplate.category} Module</p>
+                            </div>
+                            <button
+                                onClick={closeTemplate}
+                                className="p-2 hover:bg-neutral-200 rounded-full transition-colors text-neutral-500"
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+
+                        <div className="p-6 overflow-y-auto bg-white flex-1">
+                            {selectedTemplate.component}
+                        </div>
+
+                        <div className="p-4 bg-neutral-50 border-t border-neutral-100 text-right text-xs text-neutral-400">
+                            Press ESC to close
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWizard } from '../context/WizardContext';
 import { motion } from 'framer-motion';
 import { BookOpen, Share2, Download, CircleHelp, LayoutDashboard, Users, ArrowRight, Calendar, Flag, TrendingUp } from 'lucide-react';
@@ -13,6 +13,10 @@ const FacultyDashboard = () => {
     const { state } = useWizard();
     const [tourActive, setTourActive] = useState(false);
     const [tourStep, setTourStep] = useState(0);
+
+    useEffect(() => {
+        document.title = 'Faculty Dashboard | SMA Toolkit';
+    }, []);
 
     // Defensive check
     if (!state) return <div>Loading Wizard State...</div>;
@@ -197,6 +201,46 @@ const FacultyDashboard = () => {
                             <h2 className="text-xl font-display font-bold text-ucf-black">Tools & Resources</h2>
                         </div>
 
+                        {/* Tools Navigation */}
+                        <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
+                            <h3 className="font-bold text-ucf-black mb-4 flex items-center">
+                                <BookOpen className="w-4 h-4 mr-2 text-ucf-gold" />
+                                Faculty Tools
+                            </h3>
+                            <ul className="space-y-2">
+                                <li>
+                                    <a href="/assignments" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                        <span className="flex items-center">
+                                            Assignment Builder
+                                            <span className="ml-2 bg-ucf-gold text-ucf-black text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">New</span>
+                                        </span>
+                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/comparison" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                        <span className="flex items-center">
+                                            Case Study Comparison
+                                            <span className="ml-2 bg-ucf-gold text-ucf-black text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">New</span>
+                                        </span>
+                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/create" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                        <span>Edit Configuration</span>
+                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/toolkit/demo" target="_blank" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                        <span>Student View (Preview)</span>
+                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
                         {/* Class Engagement Widget (New) */}
                         <div className="bg-ucf-black text-white p-6 rounded-xl border border-ucf-gold shadow-sm relative overflow-hidden">
                             <div className="relative z-10">
@@ -225,40 +269,6 @@ const FacultyDashboard = () => {
                         </div>
 
                         {displayModules.includes('social-blade') && <SocialBladeWidget />}
-
-                        {/* Tools Navigation */}
-                        <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
-                            <h3 className="font-bold text-ucf-black mb-4 flex items-center">
-                                <BookOpen className="w-4 h-4 mr-2 text-ucf-gold" />
-                                Faculty Tools
-                            </h3>
-                            <ul className="space-y-2">
-                                <li>
-                                    <a href="/assignments" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
-                                        <span>Assignment Builder</span>
-                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/comparison" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
-                                        <span>Case Study Comparison</span>
-                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/create" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
-                                        <span>Edit Configuration</span>
-                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/toolkit/demo" target="_blank" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
-                                        <span>Student View (Preview)</span>
-                                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
 
                         {/* Recent Activity / Updates Placeholder */}
                         <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">

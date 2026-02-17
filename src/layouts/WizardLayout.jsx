@@ -69,7 +69,7 @@ const WizardLayout = ({ children }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 md:p-12 relative overflow-hidden"
+                    className="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 md:p-12 relative"
                 >
                     {/* Decorative Academic Background */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-ucf-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>

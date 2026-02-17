@@ -1,16 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useWizard } from '../context/WizardContext';
-import { FileText, TrendingUp, Users, Printer, ArrowLeft } from 'lucide-react';
+import { FileText, TrendingUp, Users, Printer, ArrowLeft, Search } from 'lucide-react';
 import AssignmentCard from '../components/assignments/AssignmentCard';
 import SocialAuditTemplate from '../components/assignments/templates/SocialAuditTemplate';
 import TrendAnalysisTemplate from '../components/assignments/templates/TrendAnalysisTemplate';
 import AudiencePersonaTemplate from '../components/assignments/templates/AudiencePersonaTemplate';
 import TemplateLibrary from '../components/assignments/TemplateLibrary';
+import CourseSelector from '../components/wizard/CourseSelector';
 
 const AssignmentBuilder = () => {
-    const { state } = useWizard();
+    const { state, updateCourseDetails } = useWizard();
     const [activeTab, setActiveTab] = useState('generator'); // 'generator' or 'library'
     const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+    useEffect(() => {
+        document.title = 'Assignment Builder | SMA Toolkit';
+    }, []);
+
+    // Local state for "tweaking" context, initialized from official DB if available
+    const [customContext, setCustomContext] = useState({
+        courseName: state.courseDetails.courseCode || 'HFT 3505',
+        courseDescription: state.courseContext?.description || state.courseDetails.courseDescription || 'This course focuses on digital marketing strategies for the hospitality and tourism industry.'
+    });
+
+    // Update local context if state changes (e.g. if updated in prior wizard step)
+    useEffect(() => {
+        setCustomContext({
+            courseName: state.courseDetails.courseCode,
+            courseDescription: state.courseContext?.description || state.courseDetails.courseDescription
+        });
+    }, [state.courseDetails.courseCode, state.courseContext, state.courseDetails.courseDescription]);
+
+    const handleContextChange = (e) => {
+        const { name, value } = e.target;
+        setCustomContext(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
     const templates = [
         {
@@ -40,7 +67,7 @@ const AssignmentBuilder = () => {
     return (
         <div className="min-h-screen bg-neutral-50 pb-12">
             {/* Header / Tabs */}
-            <div className="bg-white border-b border-neutral-200">
+            <div className="bg-white border-b border-neutral-200 print:hidden">
                 <div className="container mx-auto px-6 pt-8">
                     <h1 className="text-4xl font-display font-bold text-ucf-black mb-6">Assignment Builder</h1>
                     <div className="flex space-x-6">
@@ -69,8 +96,42 @@ const AssignmentBuilder = () => {
                     {!selectedTemplate ? (
                         // Template Selection View
                         <div className="container mx-auto px-6 py-12">
-                            <p className="text-neutral-600 mb-12 max-w-2xl">
-                                Select a template below to automatically generate an assignment brief tailored to your course and tracked topics.
+                            {/* Context Configuration */}
+                            <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm mb-8">
+                                <h2 className="text-lg font-bold text-ucf-black mb-4 flex items-center">
+                                    <FileText className="w-5 h-5 mr-2 text-ucf-gold" />
+                                    Course Context
+                                </h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Course Name / Code</label>
+                                        <CourseSelector
+                                            register={() => ({})} // Mock register since we aren't using hook-form here
+                                            defaultValue={customContext.courseName}
+                                            onSelect={(course) => {
+                                                setCustomContext({
+                                                    courseName: course.code,
+                                                    courseDescription: course.description
+                                                });
+                                                updateCourseDetails({ courseCode: course.code, courseName: course.title }, course);
+                                            }}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Course Focus (1-2 Sentences)</label>
+                                        <textarea
+                                            name="courseDescription"
+                                            value={customContext.courseDescription}
+                                            onChange={handleContextChange}
+                                            className="w-full p-3 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:border-ucf-gold font-medium resize-none h-[50px]"
+                                            placeholder="Briefly describe what this course is about..."
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="text-neutral-600 mb-8 max-w-2xl">
+                                Select a template below. The generator will use your **Course Context** above to customize the assignment brief.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -103,9 +164,9 @@ const AssignmentBuilder = () => {
 
                             <div className="bg-white rounded-xl shadow-lg overflow-hidden min-h-[800px]">
                                 {/* Dynamic Template Rendering */}
-                                {selectedTemplate === 'audit' && <SocialAuditTemplate data={state} />}
-                                {selectedTemplate === 'trends' && <TrendAnalysisTemplate data={state} />}
-                                {selectedTemplate === 'persona' && <AudiencePersonaTemplate data={state} />}
+                                {selectedTemplate === 'audit' && <SocialAuditTemplate data={state} customContext={customContext} />}
+                                {selectedTemplate === 'trends' && <TrendAnalysisTemplate data={state} customContext={customContext} />}
+                                {selectedTemplate === 'persona' && <AudiencePersonaTemplate data={state} customContext={customContext} />}
                             </div>
                         </div>
                     )}

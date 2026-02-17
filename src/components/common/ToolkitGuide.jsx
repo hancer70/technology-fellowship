@@ -37,7 +37,7 @@ const ToolkitGuide = ({ isOpen, onClose }) => {
         },
         {
             title: "Step 2: Check Competitors",
-            description: "Compare engagement metrics across different brands using the Social Blade tracker.",
+            description: "Compare engagement metrics across different brands using the Social Blade tracker. (Note: Login required for full stats)",
             icon: Users,
             action: "Next"
         },

@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { TrendingUp, Zap, Users, Sparkles, MonitorPlay } from 'lucide-react';
@@ -8,6 +8,11 @@ import ToolkitGuide from '../components/common/ToolkitGuide';
 const LandingPage = () => {
     const navigate = useNavigate();
     const [showGuide, setShowGuide] = useState(false);
+
+    useEffect(() => {
+        document.title = 'SMA Toolkit | Faculty Fellowship';
+    }, []);
+
     const exampleToolkits = [
         {
             id: 1,

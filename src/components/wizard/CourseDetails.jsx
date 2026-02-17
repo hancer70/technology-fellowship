@@ -1,12 +1,23 @@
 import { useForm } from 'react-hook-form';
 import { useWizard } from '../../context/WizardContext';
 import { ArrowRight } from 'lucide-react';
+import CourseSelector from './CourseSelector';
 
 const CourseDetails = () => {
     const { nextStep, updateCourseDetails, state } = useWizard();
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         defaultValues: state.courseDetails
     });
+
+    const onCourseSelected = (course) => {
+        setValue('courseCode', course.code);
+        setValue('courseName', course.title);
+        // We pass the full course data to the context so we have the description for later
+        updateCourseDetails({
+            courseCode: course.code,
+            courseName: course.title
+        }, course);
+    };
 
     const onSubmit = (data) => {
         updateCourseDetails(data);
@@ -17,16 +28,17 @@ const CourseDetails = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
                 <h2 className="heading-2">Course Information</h2>
-                <p className="text-neutral-600 mb-8">Enter the details for the course where you'll be using this toolkit.</p>
+                <p className="text-neutral-600 mb-8">Select from Rosen College courses or enter manually for new courses.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label className="input-label">Course Code</label>
-                    <input
-                        {...register('courseCode', { required: 'Course Code is required' })}
-                        className="input-field"
-                        placeholder="e.g. HFT 3505"
+                    <CourseSelector
+                        register={register}
+                        onSelect={onCourseSelected}
+                        defaultValue={state.courseDetails.courseCode}
+                        error={errors.courseCode}
                     />
                     {errors.courseCode && <span className="text-red-500 text-xs mt-1">{errors.courseCode.message}</span>}
                 </div>

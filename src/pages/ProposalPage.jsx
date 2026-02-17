@@ -3,6 +3,10 @@ import Header from '../components/common/Header';
 import { FileText, Download, CheckCircle, Target, Users } from 'lucide-react';
 
 const ProposalPage = () => {
+    React.useEffect(() => {
+        document.title = 'Fellowship Proposal | SMA Toolkit';
+    }, []);
+
     return (
         <div className="min-h-screen bg-white font-sans selection:bg-ucf-gold selection:text-ucf-black">
             <Header />

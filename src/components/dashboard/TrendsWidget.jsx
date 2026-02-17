@@ -30,8 +30,8 @@ const TrendsWidget = ({ topic }) => {
     }, [topic]);
 
     return (
-        <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
-            <div className="flex justify-between items-start mb-4">
+        <div className="bg-white p-4 rounded-xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+            <div className="flex justify-between items-start mb-3">
                 <div className="flex items-center space-x-2 text-ucf-black">
                     <TrendingUp className="w-5 h-5 text-ucf-gold" />
                     <h3 className="font-bold text-lg">Google Trends</h3>
@@ -47,22 +47,22 @@ const TrendsWidget = ({ topic }) => {
                 </a>
             </div>
 
-            <div className="mb-4">
-                <p className="text-sm text-neutral-500 mb-1">Interest over time (Last 12 Months):</p>
-                <div className="font-bold text-2xl text-ucf-black capitalize truncate">{topic || 'General Hospitality'}</div>
+            <div className="mb-3">
+                <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest mb-0.5">Interest over time (Last 12 Months)</p>
+                <div className="font-bold text-base text-ucf-black capitalize truncate leading-tight">{topic || 'General Hospitality'}</div>
             </div>
 
             {/* Dynamic Graph Area */}
-            <div className="h-64 w-full relative border border-neutral-100 rounded-lg overflow-hidden bg-neutral-50">
+            <div className="h-40 w-full relative border border-neutral-100 rounded-lg overflow-hidden bg-neutral-50 flex-grow">
                 {loading ? (
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <RefreshCw className="w-8 h-8 text-ucf-gold animate-spin" />
+                        <RefreshCw className="w-6 h-6 text-ucf-gold animate-spin" />
                     </div>
                 ) : (
                     <ResponsiveContainer width="100%" height="100%">
                         <AreaChart
                             data={data}
-                            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                            margin={{ top: 5, right: 5, left: -25, bottom: 0 }}
                         >
                             <defs>
                                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
@@ -73,24 +73,24 @@ const TrendsWidget = ({ topic }) => {
                             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e5e5" />
                             <XAxis
                                 dataKey="name"
-                                tick={{ fontSize: 10 }}
+                                tick={{ fontSize: 9 }}
                                 axisLine={false}
                                 tickLine={false}
                                 interval={2}
                             />
                             <YAxis
-                                tick={{ fontSize: 10 }}
+                                tick={{ fontSize: 9 }}
                                 axisLine={false}
                                 tickLine={false}
                             />
                             <Tooltip
-                                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', fontSize: '12px' }}
                             />
                             <Area
                                 type="monotone"
                                 dataKey="value"
                                 stroke="#FFC904"
-                                strokeWidth={3}
+                                strokeWidth={2}
                                 fillOpacity={1}
                                 fill="url(#colorValue)"
                             />
@@ -103,7 +103,7 @@ const TrendsWidget = ({ topic }) => {
                 href={trendsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 block w-full text-center py-2 rounded-lg bg-neutral-100 text-neutral-600 font-bold text-sm hover:bg-neutral-200 transition-colors"
+                className="mt-3 block w-full text-center py-1.5 rounded bg-neutral-100 text-neutral-600 font-bold text-xs hover:bg-neutral-200 transition-colors"
             >
                 View Live Report
             </a>
