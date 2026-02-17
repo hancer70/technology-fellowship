@@ -30,9 +30,9 @@ const LandingPage = () => {
         },
         {
             id: 3,
-            course: 'HFT 4464',
-            title: 'Hospitality Industry Finance',
-            instructor: 'Dr. Mehmet Altin',
+            course: 'HFT 4295',
+            title: 'Strategic Management in Hospitality',
+            instructor: 'Dr. Jeong Hyun Kim',
             students: 32
         }
     ];
@@ -218,15 +218,15 @@ const LandingPage = () => {
                             <div
                                 key={toolkit.id}
                                 onClick={() => navigate(`/toolkit/${toolkit.course.replace(/\s+/g, '-').toLowerCase()}`)}
-                                className="bg-white border-l-4 border-ucf-black p-8 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                                className="bg-white border-l-4 border-ucf-black p-8 shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer flex flex-col h-full"
                             >
                                 <div className="text-xs font-bold text-ucf-gold uppercase tracking-widest mb-2 group-hover:text-ucf-black transition-colors">
                                     {toolkit.course}
                                 </div>
-                                <h3 className="text-xl font-bold text-ucf-black mb-2 leading-tight font-display">
+                                <h3 className="text-xl font-bold text-ucf-black mb-2 leading-tight font-display flex-grow">
                                     {toolkit.title}
                                 </h3>
-                                <div className="mt-4 pt-4 border-t border-neutral-100 flex items-center justify-between text-sm text-neutral-500">
+                                <div className="pt-4 border-t border-neutral-100 flex items-center justify-between text-sm text-neutral-500 mt-auto">
                                     <span className="font-medium text-ucf-black">{toolkit.instructor}</span>
                                     <span className="flex items-center text-ucf-gold font-bold bg-neutral-100 px-2 py-1 rounded group-hover:bg-ucf-black group-hover:text-white transition-colors">
                                         <Users className="w-3 h-3 mr-1" />

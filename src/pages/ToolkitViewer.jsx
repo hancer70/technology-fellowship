@@ -27,9 +27,9 @@ const ToolkitViewer = () => {
             topics: ['Oracle Hospitality', 'Sabre', 'Amadeus'],
             modules: ['google-trends', 'competitor']
         },
-        'hft-4464': {
-            courseName: 'Hospitality Industry Finance',
-            courseCode: 'HFT 4464',
+        'hft-4295': {
+            courseName: 'Strategic Management in Hospitality',
+            courseCode: 'HFT 4295',
             topics: ['Marriott International', 'Hilton Worldwide', 'Hyatt Hotels'],
             modules: ['google-trends']
         },

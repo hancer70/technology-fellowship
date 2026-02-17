@@ -509,15 +509,6 @@ export const courses = [
     "department": "Department of Foodservice and Lodging Management"
   },
   {
-    "id": "HFT3868C",
-    "code": "HFT 3868",
-    "title": "History and Culture of Wine",
-    "description": "The role that wine has played in the history, culture, and religion of diverse civilizations. Current Fee Per Student $70.00",
-    "credits": "3",
-    "level": "Undergraduate",
-    "department": "Department of Foodservice and Lodging Management"
-  },
-  {
     "id": "HFT3868K",
     "code": "HFT 3868",
     "title": "Honors History and Culture of Wine",
@@ -567,15 +558,6 @@ export const courses = [
     "code": "HFT 4065",
     "title": "Fine Spirits Management",
     "description": "History, production methods, regulations, and sensory profiles of major spirit categories and their sub- categories; cocktail techniques and classifications; and responsible vending practices",
-    "credits": "3",
-    "level": "Undergraduate",
-    "department": "Department of Foodservice and Lodging Management"
-  },
-  {
-    "id": "HFT4065C",
-    "code": "HFT 4065",
-    "title": "Fine Spirits Management",
-    "description": "History, production methods, regulations, and sensory profiles of major spirit categories and their sub- categories; cocktail techniques and classifications; and responsible vending practices. Current Fee Per Student $45.00",
     "credits": "3",
     "level": "Undergraduate",
     "department": "Department of Foodservice and Lodging Management"
@@ -1071,15 +1053,6 @@ export const courses = [
     "code": "HFT 4866",
     "title": "Exploring Wines of the World",
     "description": "The study of wine, including methodology of tasting and evaluating wines, growing, processing, and production of grape varieties used in making wine",
-    "credits": "3",
-    "level": "Undergraduate",
-    "department": "Department of Foodservice and Lodging Management"
-  },
-  {
-    "id": "HFT4866C",
-    "code": "HFT 4866",
-    "title": "Exploring Wines of the World",
-    "description": "Using senses to evaluate wines, methodology of tasting and evaluating wines, growing, processing, and production of grape varieties used in making wine. Current Fee Per Student $70.00",
     "credits": "3",
     "level": "Undergraduate",
     "department": "Department of Foodservice and Lodging Management"

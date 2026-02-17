@@ -118,7 +118,7 @@ export const generatePDF = (courseCode, courseName, topics, dueDate) => {
     doc.save(`${courseCode.replace(' ', '_')}_Worksheet_Fillable.pdf`);
 };
 
-export const generatePPTX = (courseCode, courseName, topics, dueDate) => {
+export const generatePPTX = async (courseCode, courseName, topics, dueDate) => {
     const pres = new pptxgen();
 
     // Layout
@@ -151,5 +151,5 @@ export const generatePPTX = (courseCode, courseName, topics, dueDate) => {
     ];
     slide3.addTable(rows, { x: 1, y: 1.5, w: 9, fill: { color: 'F9F9F9' }, border: { pt: 1, color: 'CCCCCC' } });
 
-    pres.writeFile({ fileName: `${courseCode.replace(' ', '_')}_Presentation.pptx` });
+    await pres.writeFile({ fileName: `${courseCode.replace(' ', '_')}_Presentation.pptx` });
 };

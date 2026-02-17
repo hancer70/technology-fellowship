@@ -88,6 +88,10 @@ const Header = () => {
                             Fellowship Proposal
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ucf-gold transition-all group-hover:w-full"></span>
                         </Link>
+                        <Link to="/courses" className="hover:text-ucf-gold transition-colors relative group">
+                            Courses
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ucf-gold transition-all group-hover:w-full"></span>
+                        </Link>
                         <a href="https://hospitality.ucf.edu/degree-programs/" target="_blank" rel="noopener noreferrer" className="hover:text-ucf-gold transition-colors relative group">
                             Academics
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ucf-gold transition-all group-hover:w-full"></span>
@@ -129,6 +133,7 @@ const Header = () => {
                         className="fixed inset-0 z-40 bg-white md:hidden pt-48 px-6 flex flex-col space-y-6 shadow-2xl"
                     >
                         <Link to="/proposal" onClick={toggleMenu} className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Fellowship Proposal</Link>
+                        <Link to="/courses" onClick={toggleMenu} className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Courses</Link>
                         <a href="https://hospitality.ucf.edu/degree-programs/" target="_blank" rel="noopener noreferrer" className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Academics</a>
                         <a href="https://hospitality.ucf.edu/research/" target="_blank" rel="noopener noreferrer" className="text-2xl font-display font-bold text-ucf-black hover:text-ucf-gold transition-colors">Research</a>
                         <hr className="border-neutral-200" />

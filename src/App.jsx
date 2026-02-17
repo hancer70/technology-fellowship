@@ -9,6 +9,7 @@ import ComparisonTool from './pages/ComparisonTool';
 import { WizardProvider } from './context/WizardContext';
 
 import ProposalPage from './pages/ProposalPage';
+import CourseCatalog from './pages/CourseCatalog';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/proposal" element={<ProposalPage />} />
+            <Route path="/courses" element={<CourseCatalog />} />
             <Route path="/create" element={<WizardContainer />} />
             <Route path="/dashboard" element={<FacultyDashboard />} />
             <Route path="/assignments" element={<AssignmentBuilder />} />
