@@ -43,11 +43,11 @@ const LandingPage = () => {
             <Header />
 
             {/* 3. Hero Section (Solid, Authoritative) */}
-            <section className="relative bg-neutral-900 py-32 md:py-48 overflow-hidden">
+            <section className="relative bg-neutral-900 py-20 md:py-28 overflow-hidden">
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/40 z-10"></div>
-                    <div className="w-full h-full bg-[url('/rosen-hero.png')] bg-cover bg-center opacity-60 grayscale hover:grayscale-0 transition-all duration-[2s] transform scale-105 hover:scale-110"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20 z-10"></div>
+                    <div className="w-full h-full bg-[url('/rosen-hero.png')] bg-cover bg-center opacity-80 grayscale hover:grayscale-0 transition-all duration-[2s] transform scale-105 hover:scale-110"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 text-center md:text-left">
@@ -97,7 +97,7 @@ const LandingPage = () => {
             </section>
 
             {/* 4. Faculty Guide Section */}
-            <section id="features" className="py-24 bg-white relative scroll-mt-20">
+            <section id="features" className="py-16 bg-white relative scroll-mt-20">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-ucf-gold via-ucf-black to-ucf-gold opacity-20"></div>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="mb-16">
