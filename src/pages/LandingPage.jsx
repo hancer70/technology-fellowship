@@ -47,7 +47,7 @@ const LandingPage = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20 z-10"></div>
-                    <div className="w-full h-full bg-[url('/rosen-hero.png')] bg-cover bg-center opacity-80 grayscale hover:grayscale-0 transition-all duration-[2s] transform scale-105 hover:scale-110"></div>
+                    <div className="w-full h-full bg-[url('/rosen-hero.png')] bg-cover bg-center opacity-80 transition-all duration-[2s] transform scale-105 hover:scale-110"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-6 text-center md:text-left">
