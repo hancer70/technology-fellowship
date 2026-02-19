@@ -12,6 +12,8 @@ const defaultState = {
     },
     courseContext: null, // Store full course object from DB
     assessments: [], // Store generated assessments
+    selectedModules: [], // Initialize as empty array
+    topics: [], // Initialize as empty array
     isGenerating: false,
     error: null
 };
@@ -27,7 +29,10 @@ const getInitialState = () => {
                 courseDetails: {
                     ...defaultState.courseDetails,
                     ...parsed.courseDetails
-                }
+                },
+                // Ensure arrays are initialized if missing in saved state
+                selectedModules: parsed.selectedModules || defaultState.selectedModules,
+                topics: parsed.topics || defaultState.topics
             };
         } catch (e) {
             console.error('Error parsing wizard state', e);

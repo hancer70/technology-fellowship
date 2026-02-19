@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { TrendingUp, Zap, Users, Sparkles, MonitorPlay } from 'lucide-react';
 import Header from '../components/common/Header';
@@ -88,9 +88,16 @@ const LandingPage = () => {
                                 Student Guide
                             </button>
 
-                            <a href="#features" className="btn-ucf-secondary border border-neutral-700 hover:bg-neutral-800 text-lg px-8 py-4 bg-transparent text-white text-center" aria-label="View Faculty Guide Section">
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                                className="btn-ucf-secondary border border-neutral-700 hover:bg-neutral-800 text-lg px-8 py-4 bg-transparent text-white text-center cursor-pointer"
+                                aria-label="View Faculty Guide Section"
+                            >
                                 Faculty Guide
-                            </a>
+                            </button>
                         </div>
                     </motion.div>
                 </div>
@@ -277,7 +284,7 @@ const LandingPage = () => {
                             <h4 className="font-bold text-ucf-gold uppercase tracking-widest text-sm mb-6">Resources</h4>
                             <ul className="space-y-3 text-sm text-neutral-300">
                                 <li><a href="https://hospitality.ucf.edu/about/our-people/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Faculty Resources</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Technology Fellowship</a></li>
+                                <li><Link to="/proposal" className="hover:text-white transition-colors">Technology Fellowship</Link></li>
                                 <li><a href="https://webcourses.ucf.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Webcourses@UCF</a></li>
                                 <li><a href="https://library.ucf.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Library</a></li>
                             </ul>

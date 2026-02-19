@@ -113,7 +113,7 @@ const CourseCatalog = () => {
                             <div className="p-4 border-t border-neutral-100 bg-neutral-50/50">
                                 <button
                                     onClick={() => handleCreateToolkit(course)}
-                                    className="w-full btn-ucf-secondary border border-neutral-300 bg-white hover:bg-ucf-black hover:text-ucf-gold hover:border-ucf-black flex items-center justify-center py-2 text-sm"
+                                    className="w-full border-2 border-neutral-300 bg-white text-ucf-black font-bold uppercase tracking-wide hover:bg-ucf-black hover:text-ucf-gold hover:border-ucf-black flex items-center justify-center py-2 text-sm transition-colors rounded-lg"
                                 >
                                     Create Toolkit <ArrowRight className="w-4 h-4 ml-2" />
                                 </button>

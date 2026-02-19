@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useWizard } from '../context/WizardContext';
 import { motion } from 'framer-motion';
 import { BookOpen, Share2, Download, CircleHelp, LayoutDashboard, Users, ArrowRight, Calendar, Flag, TrendingUp } from 'lucide-react';
@@ -209,34 +210,34 @@ const FacultyDashboard = () => {
                             </h3>
                             <ul className="space-y-2">
                                 <li>
-                                    <a href="/assignments" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                    <Link to="/assignments" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
                                         <span className="flex items-center">
                                             Assignment Builder
                                             <span className="ml-2 bg-ucf-gold text-ucf-black text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">New</span>
                                         </span>
                                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/comparison" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                    <Link to="/comparison" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
                                         <span className="flex items-center">
                                             Case Study Comparison
                                             <span className="ml-2 bg-ucf-gold text-ucf-black text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">New</span>
                                         </span>
                                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/create" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                    <Link to="/create" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
                                         <span>Edit Configuration</span>
                                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="/toolkit/demo" target="_blank" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
+                                    <Link to="/toolkit/demo" target="_blank" className="block p-3 rounded-lg bg-neutral-50 hover:bg-ucf-gold/10 text-neutral-700 hover:text-ucf-gold-dark font-medium transition-colors border border-transparent hover:border-ucf-gold flex justify-between items-center group">
                                         <span>Student View (Preview)</span>
                                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
