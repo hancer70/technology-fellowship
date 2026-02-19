@@ -7,6 +7,7 @@ import GuideOverlay from '../components/guides/GuideOverlay';
 import TopicCard from '../components/dashboard/TopicCard';
 import TrendsWidget from '../components/dashboard/TrendsWidget';
 import SocialBladeWidget from '../components/dashboard/SocialBladeWidget';
+import ComparisonWidget from '../components/dashboard/ComparisonWidget';
 
 import { generatePDF } from '../utils/documentGenerators';
 
@@ -190,6 +191,10 @@ const FacultyDashboard = () => {
                                     ))}
                                     {displayTopics.length === 0 && <TrendsWidget topic="Hospitality" />}
                                 </>
+                            )}
+
+                            {displayModules.includes('brand-comparison') && (
+                                <ComparisonWidget />
                             )}
                         </div>
                     </div>

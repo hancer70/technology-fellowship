@@ -7,6 +7,7 @@ import TrendsWidget from '../components/dashboard/TrendsWidget';
 import SocialBladeWidget from '../components/dashboard/SocialBladeWidget';
 import ToolkitGuide from '../components/common/ToolkitGuide';
 import SubmissionTools from '../components/dashboard/SubmissionTools';
+import ComparisonWidget from '../components/dashboard/ComparisonWidget';
 import { motion } from 'framer-motion';
 
 const ToolkitViewer = () => {
@@ -141,6 +142,10 @@ const ToolkitViewer = () => {
                                     <TrendsWidget key={idx} topic={topic} />
                                 ))}
                             </div>
+                        )}
+
+                        {modules.includes('brand-comparison') && (
+                            <ComparisonWidget />
                         )}
                     </div>
 
