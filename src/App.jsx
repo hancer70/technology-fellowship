@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { WizardProvider } from './context/WizardContext';
 import LoadingSpinner from './components/common/LoadingSpinner';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load route components
 const LandingPage = React.lazy(() => import('./pages/LandingPage'));
@@ -17,6 +18,7 @@ function App() {
   return (
     <WizardProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen">
           <Suspense fallback={<LoadingSpinner />}>
             <Routes>
