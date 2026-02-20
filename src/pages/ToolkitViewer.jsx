@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useWizard } from '../context/WizardContext';
 import { BookOpen, LayoutDashboard, ExternalLink, Calendar } from 'lucide-react';
@@ -26,7 +26,7 @@ const ToolkitViewer = () => {
             courseName: 'Hospitality Information Systems',
             courseCode: 'HFT 3444',
             topics: ['Oracle Hospitality', 'Sabre', 'Amadeus'],
-            modules: ['google-trends', 'competitor']
+            modules: ['google-trends', 'brand-comparison']
         },
         'hft-4295': {
             courseName: 'Strategic Management in Hospitality',
@@ -43,6 +43,7 @@ const ToolkitViewer = () => {
     };
 
     const activePreset = presets[toolkitId];
+    const [showGuide, setShowGuide] = useState(!activePreset);
 
     // Use preset if available, otherwise fallback to wizard state
     const courseName = activePreset ? activePreset.courseName : (state.courseDetails?.courseName || 'Social Media Analytics');
@@ -53,7 +54,7 @@ const ToolkitViewer = () => {
 
     useEffect(() => {
         if (courseCode) {
-            document.title = `${courseCode} Toolkit | SMA Toolkit`;
+            document.title = `${courseCode}: ${courseName} | SMA Toolkit`;
         } else {
             document.title = 'Student Toolkit | SMA Toolkit';
         }
@@ -61,7 +62,7 @@ const ToolkitViewer = () => {
 
     return (
         <div className="min-h-screen bg-neutral-50 font-sans">
-            <ToolkitGuide />
+            <ToolkitGuide isOpen={showGuide} onClose={() => setShowGuide(false)} />
 
             {/* Student Header */}
             <header className="bg-ucf-black text-white py-6 px-6 border-b-4 border-ucf-gold">

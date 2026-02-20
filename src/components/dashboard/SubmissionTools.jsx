@@ -25,7 +25,7 @@ const SubmissionTools = ({ courseCode, courseName, topics, dueDate }) => {
                     <div className="flex items-center">
                         <FileText className="w-5 h-5 mr-3 text-ucf-gold" />
                         <div>
-                            <div className="font-bold text-sm">Download Worksheet</div>
+                            <div className="font-bold text-sm">Download {courseCode} Worksheet</div>
                             <div className="text-xs text-neutral-400">PDF Template</div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ const SubmissionTools = ({ courseCode, courseName, topics, dueDate }) => {
                     <div className="flex items-center">
                         <MonitorPlay className="w-5 h-5 mr-3 text-ucf-gold" />
                         <div>
-                            <div className="font-bold text-sm">Export Presentation</div>
+                            <div className="font-bold text-sm">Export {courseCode} Presentation</div>
                             <div className="text-xs text-neutral-400">PowerPoint Deck</div>
                         </div>
                     </div>
